@@ -1,0 +1,13 @@
+node_modules
+**/node_modules
+.next
+dist
+.turbo
+coverage
+__pycache__
+**/__pycache__
+*.pyc
+apps/worker/chroma_db
+uploads
+.env
+.git

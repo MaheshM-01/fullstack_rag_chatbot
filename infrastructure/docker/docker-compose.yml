@@ -1,0 +1,86 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: rag-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${DB_NAME:-ragchatbot}
+      POSTGRES_USER: ${DB_USER:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-password}
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-postgres} -d ${DB_NAME:-ragchatbot}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  worker:
+    build:
+      context: ../..
+      dockerfile: apps/worker/Dockerfile
+    container_name: rag-worker
+    restart: unless-stopped
+    env_file:
+      - ../../.env
+    environment:
+      WORKER_HOST: 0.0.0.0
+      WORKER_PORT: 8000
+      WORKER_RELOAD: "false"
+      CHROMA_PERSIST_DIRECTORY: /app/chroma_db
+      UPLOAD_DIR: /app/uploads
+      FRONTEND_URL: http://localhost:3000
+    ports:
+      - "8001:8000"
+    volumes:
+      - chroma_data:/app/chroma_db
+      - worker_uploads:/app/uploads
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  api:
+    build:
+      context: ../..
+      dockerfile: apps/api/Dockerfile
+    container_name: rag-api
+    restart: unless-stopped
+    env_file:
+      - ../../.env
+    environment:
+      API_PORT: 3001
+      DB_HOST: postgres
+      DB_PORT: 5432
+      WORKER_URL: http://worker:8000
+      FRONTEND_URL: http://localhost:3000
+    ports:
+      - "3001:3001"
+    volumes:
+      - api_uploads:/app/uploads
+    depends_on:
+      postgres:
+        condition: service_healthy
+      worker:
+        condition: service_started
+
+  web:
+    build:
+      context: ../..
+      dockerfile: apps/web/Dockerfile
+    container_name: rag-web
+    restart: unless-stopped
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:3001/api
+    ports:
+      - "3000:3000"
+    depends_on:
+      api:
+        condition: service_started
+
+volumes:
+  postgres_data:
+  chroma_data:
+  worker_uploads:
+  api_uploads:

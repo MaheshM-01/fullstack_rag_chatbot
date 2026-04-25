@@ -1,0 +1,153 @@
+
+# ============================================================
+# RAG CHATBOT - Python Dependencies
+# Stack: Groq (LLM) + ChromaDB (Vector DB) + sentence-transformers
+# ============================================================
+# HOW TO INSTALL:
+#   conda activate RAGchatbot
+#   pip install -r requirements.txt
+#
+# WHY EACH PACKAGE:
+#   explained below per section
+# ============================================================
+
+
+# ============================================================
+# GROQ - Free LLM API
+# ============================================================
+# WHAT: Official Groq Python client
+# WHY:  Talk to Llama3/Mixtral models for free
+# HOW:  groq.Client(api_key=...).chat.completions.create(...)
+# ============================================================
+groq==0.8.0
+
+
+# ============================================================
+# LANGCHAIN - RAG Framework
+# ============================================================
+# WHAT: Framework that connects all RAG pieces together
+# WHY:  Without LangChain, you'd manually write:
+#         - prompt building
+#         - chain logic (retrieve → generate)
+#         - memory management
+#         - output parsing
+#       LangChain gives you all this ready-made
+# HOW:  We use langchain-groq to connect Groq to LangChain
+# ============================================================
+langchain==0.2.0
+langchain-community==0.2.0
+langchain-groq==0.1.6
+
+
+# ============================================================
+# CHROMADB - Local Vector Database
+# ============================================================
+# WHAT: Stores document embeddings as local files on your PC
+# WHY:  No cloud, no cost, no internet needed after setup
+#       Data saved in ./chroma_db folder permanently
+# HOW:  chromadb.PersistentClient(path="./chroma_db")
+#         .get_or_create_collection("rag_documents")
+#         .add(embeddings=[...], documents=[...])
+# ============================================================
+chromadb==0.5.0
+posthog==3.5.0
+
+
+# ============================================================
+# SENTENCE-TRANSFORMERS - Local Embeddings
+# ============================================================
+# WHAT: Converts text → vectors (numbers) locally on your machine
+# WHY:  100% free, no API key needed, works offline
+#       First run downloads model (~90MB), then cached forever
+# HOW:  SentenceTransformer("all-MiniLM-L6-v2").encode("your text")
+#       Output: [0.23, -0.87, 0.12, ...] (384 numbers)
+#
+# This is used TWICE:
+#   1. Ingestion: chunk text → vector → store in ChromaDB
+#   2. Retrieval: question → vector → search ChromaDB
+# ============================================================
+sentence-transformers==3.0.0
+
+
+# ============================================================
+# DOCUMENT LOADERS
+# ============================================================
+# pypdf    → Read PDF files page by page
+# python-docx → Read Word (.docx) documents
+# beautifulsoup4 → Parse HTML from URLs
+# httpx    → Make HTTP requests (fetch URLs)
+# ============================================================
+pypdf==4.2.0
+python-docx==1.1.0
+beautifulsoup4==4.12.3
+httpx==0.27.0
+
+
+# ============================================================
+# FASTAPI - Python Web Server
+# ============================================================
+# WHAT: Runs our Python RAG logic as a local HTTP server
+# WHY:  NestJS (Node.js) can't run Python directly
+#       So Python runs as separate server on port 8000
+#       NestJS calls it via HTTP: POST http://localhost:8000/chat
+# HOW:  @app.post("/chat") → receives question → returns answer
+# ============================================================
+fastapi==0.111.0
+uvicorn==0.30.0
+python-multipart==0.0.9
+
+
+# ============================================================
+# PYDANTIC - Data Validation
+# ============================================================
+# WHAT: Validates request/response data shapes
+# WHY:  If frontend sends wrong data format, Pydantic catches it
+#       before it causes bugs deep in your code
+# HOW:  class ChatRequest(BaseModel): question: str
+#       FastAPI auto-validates incoming JSON against this model
+# ============================================================
+pydantic==2.7.0
+pydantic-settings==2.3.0
+
+
+# ============================================================
+# ENVIRONMENT & UTILITIES
+# ============================================================
+# python-dotenv → reads .env file into os.environ
+# tiktoken      → counts tokens (to check if text fits LLM limit)
+# nltk          → sentence splitting for smarter chunking
+# ============================================================
+python-dotenv==1.0.0
+tiktoken==0.7.0
+nltk==3.8.1
+
+
+# ============================================================
+# RERANKING - Improves retrieval accuracy
+# ============================================================
+# WHAT: After vector search gets 10 chunks, reranker
+#       re-scores them more accurately using a cross-encoder
+# WHY:  Vector search = approximate (fast but not perfect)
+#       Reranker = precise (slower but much better quality)
+# HOW:  flashrank runs locally, no API needed
+# ============================================================
+flashrank==0.2.0
+
+
+# ============================================================
+# EVALUATION - Measure RAG quality (later phase)
+# ============================================================
+# WHAT: RAGAS measures if your RAG answers are accurate
+# WHY:  How do you know if your RAG is working well?
+#       RAGAS gives scores: faithfulness, relevancy, correctness
+# NOTE: We install now, use in evaluation phase later
+# ============================================================
+ragas==0.1.9
+
+
+# ============================================================
+# CORS & HTTP
+# ============================================================
+# starlette → FastAPI uses this internally
+# ============================================================
+starlette==0.37.2

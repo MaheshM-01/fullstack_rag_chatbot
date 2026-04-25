@@ -1,0 +1,123 @@
+
+# ============================================================
+# PYTHON (Conda / pip)
+# WHY: These are auto-generated. Anyone can recreate them
+#      from requirements.txt. No need to push to GitHub.
+# ============================================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Virtual environments (venv / conda)
+# WHY: Conda env is on YOUR machine. Others create their own.
+venv/
+.venv/
+env/
+ENV/
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# ============================================================
+# NODE.JS / JAVASCRIPT
+# WHY: node_modules folder = millions of files, hundreds of MB
+#      Anyone can run "npm install" to recreate it from package.json
+# ============================================================
+node_modules/
+.npm
+*.tsbuildinfo
+
+# Build outputs
+# WHY: These are generated files. Source code is enough.
+dist/
+build/
+.next/
+out/
+.turbo/
+
+# ============================================================
+# ENVIRONMENT / SECRETS
+# WHY: .env has your GROQ_API_KEY, DB passwords etc.
+#      If you push this to GitHub = your keys are PUBLIC = HACKED
+#      .env.example is safe to push (it has no real values)
+# ============================================================
+.env
+.env.local
+.env.production
+.env.development
+.env.staging
+!.env.example          
+
+# ============================================================
+# CHROMADB (Local Vector Database)
+# WHY: ChromaDB stores data locally in a folder called 'chroma_db'
+#      This can be GBs in size. Don't push to GitHub.
+#      Others will create their own when they run the app.
+# ============================================================
+chroma_db/
+*.chroma
+chroma/
+
+# ============================================================
+# LOGS
+# WHY: Log files are runtime data, not source code.
+#      They change every run and can be huge.
+# ============================================================
+*.log
+logs/
+*.log.*
+pip-log.txt
+
+# ============================================================
+# OS FILES
+# WHY: Mac creates .DS_Store, Windows creates Thumbs.db
+#      These are system files, nothing to do with your code.
+# ============================================================
+.DS_Store
+.DS_Store?
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ============================================================
+# VS CODE
+# WHY: .vscode/settings.json has YOUR personal editor settings
+#      like font size, theme. Others have their own preferences.
+#      But we KEEP .vscode/extensions.json so team uses same plugins.
+# ============================================================
+.vscode/settings.json
+.vscode/launch.json
+.vscode/*.code-workspace
+!.vscode/extensions.json
+
+# ============================================================
+# TESTING & COVERAGE
+# WHY: Generated test reports. Not source code.
+# ============================================================
+coverage/
+.coverage
+htmlcov/
+.pytest_cache/
+.nyc_output/
+junit.xml
+
+# ============================================================
+# UPLOADED FILES (Runtime data)
+# WHY: When users upload PDFs to your app, they get stored locally.
+#      These are user data, not your code. Can be huge.
+# ============================================================
+uploads/
+temp_uploads/
+*.pdf
+*.docx
+!docs/*.pdf       
+
+# ============================================================
+# JUPYTER NOTEBOOKS checkpoints
+# ============================================================
+.ipynb_checkpoints/

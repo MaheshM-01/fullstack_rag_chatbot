@@ -1,0 +1,30 @@
+
+SmartSpend AI - Gold loan interest rate is 12 percent per annum. Premium plan costs 199 rupees per month. Supports Tamil, Hindi and English languages. 
+gold loan interest rate
+SmartSpend AI - Complete Product Documentation
+
+GOLD LOAN FEATURE:
+SmartSpend AI offers gold loan services in partnership with leading NBFCs.
+The gold loan interest rate is 9.5% to 12% per annum depending on LTV ratio.
+Maximum Loan to Value ratio is 75% of gold value as per RBI guidelines.
+Minimum loan amount is Rs 10,000 and maximum is Rs 50,00,000.
+Loan tenure ranges from 3 months to 24 months.
+Processing fee is 0.5% of the total loan amount.
+Gold loans are disbursed within 30 minutes of gold verification.
+
+EXPENSE TRACKING:
+SmartSpend uses advanced OCR technology to scan bills and receipts automatically.
+Users can photograph any bill and the app extracts amount, date, merchant and category.
+Monthly expense reports are generated automatically with charts and insights.
+The app supports UPI, credit card, debit card and cash expense tracking.
+
+SUBSCRIPTION PLANS:
+Free Plan includes basic expense tracking with 10 bill scans per month.
+Premium Plan costs Rs 199 per month with unlimited scans and AI assistant access.
+Business Plan costs Rs 999 per month with shop management and GST report features.
+Annual subscription gives 2 months free on both Premium and Business plans.
+
+SUPPORTED LANGUAGES:
+SmartSpend AI supports Tamil, Hindi and English languages.
+Voice assistance is powered by OpenAI Whisper for accurate speech recognition.
+Users can speak queries in Tamil and get responses in Tamil language.

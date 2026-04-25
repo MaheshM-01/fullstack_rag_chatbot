@@ -1,0 +1,14 @@
+[
+  {
+    "question": "What is the premium plan price?",
+    "expected_keywords": ["199", "month"]
+  },
+  {
+    "question": "What is the gold loan interest range?",
+    "expected_keywords": ["9.5", "12"]
+  },
+  {
+    "question": "Which languages are supported?",
+    "expected_keywords": ["Tamil", "Hindi", "English"]
+  }
+]
