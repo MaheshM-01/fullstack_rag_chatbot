@@ -15,8 +15,8 @@ const bodyFont = Spectral({
 });
 
 export const metadata: Metadata = {
-  title: 'RAG Portfolio Chatbot',
-  description: 'End-to-end RAG chatbot using Groq, NestJS, FastAPI, and Next.js.',
+  title: 'RAG Knowledge Assistant',
+  description: 'End-to-end RAG assistant with FastAPI, NestJS, and Next.js.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

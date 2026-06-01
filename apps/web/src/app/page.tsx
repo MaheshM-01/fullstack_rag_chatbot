@@ -291,20 +291,20 @@ export default function HomePage() {
               className="title-font"
               style={{ margin: 0, letterSpacing: '0.11em', color: 'var(--accent-strong)', fontSize: 12 }}
             >
-              PORTFOLIO PROJECT
+              AI KNOWLEDGE ASSISTANT
             </p>
             <h1 className="title-font" style={{ margin: '8px 0 10px', fontSize: 'clamp(1.8rem, 4vw, 2.9rem)' }}>
               End-to-End RAG Chatbot
             </h1>
             <p style={{ marginTop: 0, color: 'var(--text-muted)', lineHeight: 1.6 }}>
-              Groq free-tier LLM + FastAPI worker + NestJS backend + Next.js UI. Upload docs, ask contextual questions,
-              and track chat sessions with source citations.
+              LLM orchestration with FastAPI, NestJS, and Next.js. Upload documents, ask contextual questions, and review
+              chat sessions with source citations.
             </p>
             <div style={{ ...STACK_GAP, marginTop: 16 }}>
               <div className="panel" style={{ padding: 14 }}>
-                <strong className="title-font">Phase Snapshot</strong>
+                <strong className="title-font">System Snapshot</strong>
                 <p style={{ margin: '8px 0 0', color: 'var(--text-muted)' }}>
-                  Worker is ready. Login now to test backend flows, ingest docs, and validate full-stack behavior.
+                  Worker is ready. Sign in to test backend flows, ingest documents, and validate end-to-end behavior.
                 </p>
               </div>
               <div className="panel" style={{ padding: 14 }}>
